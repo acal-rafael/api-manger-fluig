@@ -1,32 +1,36 @@
 import { Sequelize } from "sequelize";
-import { conn } from "../../config/sequelize.js";
+import { conn } from '../../config/sequelize.js';
 
-export const cadFluigs = conn.define(
-  "Cad_fluigs",
+export const CadUserAPI = conn.define(
+  "CAD_USER_API",
   {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    fluig: {
+    nome: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    descricao: {
+    senha:  {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    solicitante: {
+    login: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    created_at: {
-      type: Sequelize.DATE,
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    authe: {
+      type: Sequelize.BIGINT,
       allowNull: true,
     },
-    updated_at: {
-      type: Sequelize.DATE,
+    autho: {
+      type: Sequelize.STRING,
       allowNull: true,
     },
   },

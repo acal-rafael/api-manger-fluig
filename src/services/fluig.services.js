@@ -1,8 +1,8 @@
-import { cadFluigs } from "../models/fluigs.model.js";
+import { CadFluig } from "../models/fluig.model.js";
 
 export const getAll = async () => {
   try {
-    return await cadFluigs.findAll();
+    return await CadFluig.findAll();
   } catch (error) {
     console.log(error);
     return;
@@ -11,7 +11,7 @@ export const getAll = async () => {
 
 export const createOne = async (data) => {
   try {
-    return await cadFluigs.create(data)
+    return await CadFluig.create(data);
   } catch (error) {
     console.log(error);
     return;

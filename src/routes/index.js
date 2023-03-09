@@ -1,12 +1,32 @@
 import { Router } from 'express';
-import { home, fluigs } from '../controller/index.js';
+import { home, fluig, user } from '../controller/index.js';
 
 export const routes = () => {
-  return Router()
-    .all("/")
+  return (
+    Router()
+      .all("/")
+
+      // GET
+      // Home
       .get("/", home().getHome)
-      .get("/v1/fluigs", fluigs().getAllFluigs)
+
+      // Fluig:
+      .get("/v1/fluigs", fluig().getAllFluigs)
+
+      // User:
+      .get("/v1/users", user().getAllUsers)
+      .get("/v1/user/:id", user().getOneUser)
 
       // POST:
-      .post('/v1/fluig', fluigs().postOneFluig)
+      // Fluig:
+      .post("/v1/fluig", fluig().postOneFluig)
+
+      // User:
+      .post("/v1/user", user().postOneUser)
+
+      // DELETE:
+      // User:
+      .delete("/v1/user/:id", user().deleteOneUser)
+  );
 } 
+
