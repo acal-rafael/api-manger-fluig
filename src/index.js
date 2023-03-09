@@ -3,6 +3,8 @@ import cors from 'cors';
 import { routes } from './routes/index.js';
 import { conn } from '../config/sequelize.js';
 import { setup } from '../config/setup.js';
+import swaggerUi from 'swagger-ui-express'; 
+import swaggerDocument from "../config/swagger.json" assert { type: "json" };
 
 export const App = async () => {
   const { port } = setup.api;
@@ -10,6 +12,7 @@ export const App = async () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(cors());
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   app.use(routes());
 
   try {
