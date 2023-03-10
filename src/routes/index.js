@@ -1,7 +1,12 @@
 import { Router } from 'express';
 import { home, fluig, user } from '../controller/index.js';
+import { setCors } from '../middles/cors.js';
+
 
 export const routes = () => {
+
+  const { postCors } = setCors();
+
   return (
     Router()
       .all("/")
@@ -19,7 +24,7 @@ export const routes = () => {
 
       // POST:
       // Fluig:
-      .post("/v1/fluig", fluig().postOneFluig)
+      .post("/v1/fluig", postCors, fluig().postOneFluig)
 
       // User:
       .post("/v1/user", user().postOneUser)
